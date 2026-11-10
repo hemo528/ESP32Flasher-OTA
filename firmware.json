@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-10T16:32:22Z",
+    "generatedAt":  "2026-11-10T17:01:14Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -272,6 +272,50 @@
                                                                  "offset":  "0x010000",
                                                                  "path":  "epd42c.ino.bin",
                                                                  "size":  372256,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "eink-info-screen",
+                          "name":  "4.2 寸三色墨水屏 · 桌面信息屏",
+                          "tag":  "墨水屏",
+                          "chip":  "esp32s3",
+                          "desc":  "时间/天气/月历/用量/系统信息，400x300 三色墨水屏；网页后台可改配置、上传图片。首次上电开热点 EinkScreen 配网。",
+                          "latest":  "1.0.0",
+                          "versions":  [
+                                           {
+                                               "version":  "1.0.0",
+                                               "url":  "firmware/eink-info-screen/eink-info-screen-v1.0.0.fwpack",
+                                               "size":  757850,
+                                               "sha256":  "bdccb3025f8a0022f6e1f21d96123a63f5511ffbc79ed7f256cb611a1c86fc07",
+                                               "builtAt":  "2026-11-10T17:00:56Z",
+                                               "changelog":  "4.2 寸三色墨水屏桌面信息屏首发：时间/天气/月历/用量/系统页，网页后台可改配置、上传图片。已修复：配置页 HTML 超长截断导致上传按钮失效、/info 响应越界、渲染失败不重试、网页保存的 WiFi 不生效、启动重复刷屏、空密码无法连开放网络；固件不含个人 WiFi/API 凭据（首次上电开热点 EinkScreen 配网）。",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "eink_screen.bin",
+                                                                 "size":  1225952,
                                                                  "role":  "app"
                                                              }
                                                          ]
