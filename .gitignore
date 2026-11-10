@@ -1,0 +1,8 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# 发布脚本临时产物
+*.tmp
+*.bak
