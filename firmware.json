@@ -1,238 +1,282 @@
 {
-  "schema": "fwstore/1",
-  "generatedAt": "2026-11-10T07:08:54Z",
-  "homepage": "https://github.com/hemo528/ESP32Flasher-OTA",
-  "mirrors": [
-    "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
-    "https://cdn.jsdelivr.net/gh/hemo528/ESP32Flasher-OTA@main/",
-    "https://ghproxy.net/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/"
-  ],
-  "firmwares": [
-    {
-      "id": "eink-42bw",
-      "name": "4.2 寸墨水屏 · 面板自检",
-      "tag": "墨水屏",
-      "chip": "esp32s3",
-      "desc": "SSD1619A 4.2 寸黑白墨水屏出厂自检：四色块、棋盘、边界框与全刷计时",
-      "latest": "0.1.1",
-      "versions": [
-        {
-          "version": "0.1.1",
-          "url": "firmware/eink-42bw/eink-42bw-v0.1.1.fwpack",
-          "size": 208275,
-          "sha256": "78e2b031a49c07c3ca36e0caa4fdf3c11708b2f03cdeb27c416fd3df879cc639",
-          "builtAt": "2026-11-10T07:06:21Z",
-          "changelog": "路径脱敏重建：移除编译机本地路径；功能与 v0.1.0 相同（四色块、棋盘、边界框、全刷计时）",
-          "minFlasher": "1.2.0",
-          "flash": {
-            "mode": "dio",
-            "freq": "80m",
-            "size": "16MB"
-          },
-          "files": [
-            {
-              "offset": "0x000000",
-              "path": "ws42bwmode.ino.bootloader.bin",
-              "size": 19968,
-              "role": "bootloader"
-            },
-            {
-              "offset": "0x008000",
-              "path": "ws42bwmode.ino.partitions.bin",
-              "size": 3072,
-              "role": "partition"
-            },
-            {
-              "offset": "0x010000",
-              "path": "ws42bwmode.ino.bin",
-              "size": 342400,
-              "role": "app"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "rlcd-screen",
-      "name": "RLCD 桌面信息屏",
-      "tag": "桌面屏",
-      "chip": "esp32s3",
-      "desc": "八页面 · 真实接口数据",
-      "latest": "1.2.0",
-      "versions": [
-        {
-          "version": "1.2.0",
-          "url": "firmware/rlcd-screen/rlcd-screen-v1.2.0.fwpack",
-          "size": 1002160,
-          "sha256": "ef1cc0480ffe7d164762168cd839f8ef58f1624e558f7bbd6d10ffb99941b762",
-          "builtAt": "2026-11-01T06:24:13Z",
-          "changelog": "八页面桌面信息屏：时钟 / 温湿度 / 天气 / 额度 / 日历，接入真实接口数据",
-          "minFlasher": "1.2.0",
-          "flash": {
-            "mode": "dio",
-            "freq": "80m",
-            "size": "16MB"
-          },
-          "files": [
-            {
-              "offset": "0x000000",
-              "path": "bootloader.bin",
-              "size": 22272,
-              "role": "bootloader"
-            },
-            {
-              "offset": "0x008000",
-              "path": "partition-table.bin",
-              "size": 3072,
-              "role": "partition"
-            },
-            {
-              "offset": "0x010000",
-              "path": "rlcd_frame_test.bin",
-              "size": 1682736,
-              "role": "app"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ssh-terminal",
-      "name": "SSH 终端",
-      "tag": "工具",
-      "chip": "esp32s3",
-      "desc": "全反射屏 SSH 客户端",
-      "latest": "1.0.0",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "url": "firmware/ssh-terminal/ssh-terminal-v1.0.0.fwpack",
-          "size": 1300199,
-          "sha256": "248324196d8a3233ff425369e4ba7ca975dec628ed8b709a59e821cc6ab48912",
-          "builtAt": "2026-11-01T06:24:24Z",
-          "changelog": "全反射屏 SSH 客户端，可在掌机形态下直接连接服务器操作终端",
-          "minFlasher": "1.2.0",
-          "flash": {
-            "mode": "dio",
-            "freq": "80m",
-            "size": "16MB"
-          },
-          "files": [
-            {
-              "offset": "0x000000",
-              "path": "bootloader.bin",
-              "size": 22272,
-              "role": "bootloader"
-            },
-            {
-              "offset": "0x008000",
-              "path": "partition-table.bin",
-              "size": 3072,
-              "role": "partition"
-            },
-            {
-              "offset": "0x020000",
-              "path": "ssh_terminal.bin",
-              "size": 2063088,
-              "role": "app"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "desktop-info",
-      "name": "桌面信息屏（旧版）",
-      "tag": "归档",
-      "chip": "esp32s3",
-      "desc": "LVGL 版本 · 已移除内置凭据",
-      "latest": "1.1.0",
-      "versions": [
-        {
-          "version": "1.1.0",
-          "url": "firmware/desktop-info/desktop-info-v1.1.0.fwpack",
-          "size": 825659,
-          "sha256": "382c9530de40aea7dc316b45fabb5e4cb0ba3b9a9d8bdaba6dca06cd24011792",
-          "builtAt": "2026-11-10T06:51:35Z",
-          "changelog": "安全重建：移除内置 WiFi / 和风 / 火山引擎凭据；首次启动进入配网门户 192.168.4.1 自行填写",
-          "minFlasher": "1.2.0",
-          "flash": {
-            "mode": "dio",
-            "freq": "80m",
-            "size": "16MB"
-          },
-          "files": [
-            {
-              "offset": "0x000000",
-              "path": "bootloader.bin",
-              "size": 22272,
-              "role": "bootloader"
-            },
-            {
-              "offset": "0x008000",
-              "path": "partition-table.bin",
-              "size": 3072,
-              "role": "partition"
-            },
-            {
-              "offset": "0x010000",
-              "path": "desktop_info_screen.bin",
-              "size": 1339648,
-              "role": "app"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "doom-rlcd",
-      "name": "DOOM 全反射屏掌机",
-      "tag": "游戏",
-      "chip": "esp32s3",
-      "desc": "经典 DOOM · 网页手柄操控 · 24fps",
-      "latest": "1.0.0",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "url": "firmware/doom-rlcd/doom-rlcd-v1.0.0.fwpack",
-          "size": 2476060,
-          "sha256": "b5f5238af6e2d37ade31293d63ead188b5681f3ced271734854f97a6751541f7",
-          "builtAt": "2026-11-01T13:32:42Z",
-          "changelog": "经典 DOOM 移植到全反射屏掌机，网页手柄操控、24fps 运行",
-          "minFlasher": "1.2.0",
-          "flash": {
-            "mode": "dio",
-            "freq": "80m",
-            "size": "16MB"
-          },
-          "files": [
-            {
-              "offset": "0x000000",
-              "path": "bootloader.bin",
-              "size": 22272,
-              "role": "bootloader"
-            },
-            {
-              "offset": "0x008000",
-              "path": "partition-table.bin",
-              "size": 3072,
-              "role": "partition"
-            },
-            {
-              "offset": "0x010000",
-              "path": "doom_rlcd.bin",
-              "size": 1182848,
-              "role": "app"
-            },
-            {
-              "offset": "0x410000",
-              "path": "doom1.wad",
-              "size": 4196020,
-              "role": "data"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+    "schema":  "fwstore/1",
+    "generatedAt":  "2026-11-10T16:32:22Z",
+    "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
+    "mirrors":  [
+                    "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
+                    "https://cdn.jsdelivr.net/gh/hemo528/ESP32Flasher-OTA@main/",
+                    "https://ghproxy.net/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/"
+                ],
+    "firmwares":  [
+                      {
+                          "id":  "eink-42bw",
+                          "name":  "4.2 寸墨水屏 · 面板自检",
+                          "tag":  "墨水屏",
+                          "chip":  "esp32s3",
+                          "desc":  "SSD1619A 4.2 寸黑白墨水屏出厂自检：四色块、棋盘、边界框与全刷计时",
+                          "latest":  "0.1.1",
+                          "versions":  [
+                                           {
+                                               "version":  "0.1.1",
+                                               "url":  "firmware/eink-42bw/eink-42bw-v0.1.1.fwpack",
+                                               "size":  208275,
+                                               "sha256":  "78e2b031a49c07c3ca36e0caa4fdf3c11708b2f03cdeb27c416fd3df879cc639",
+                                               "builtAt":  "2026-11-10T07:06:21Z",
+                                               "changelog":  "路径脱敏重建：移除编译机本地路径；功能与 v0.1.0 相同（四色块、棋盘、边界框、全刷计时）",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "ws42bwmode.ino.bootloader.bin",
+                                                                 "size":  19968,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "ws42bwmode.ino.partitions.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "ws42bwmode.ino.bin",
+                                                                 "size":  342400,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "rlcd-screen",
+                          "name":  "RLCD 桌面信息屏",
+                          "tag":  "桌面屏",
+                          "chip":  "esp32s3",
+                          "desc":  "八页面 · 真实接口数据",
+                          "latest":  "1.2.0",
+                          "versions":  [
+                                           {
+                                               "version":  "1.2.0",
+                                               "url":  "firmware/rlcd-screen/rlcd-screen-v1.2.0.fwpack",
+                                               "size":  1002160,
+                                               "sha256":  "ef1cc0480ffe7d164762168cd839f8ef58f1624e558f7bbd6d10ffb99941b762",
+                                               "builtAt":  "2026-11-01T06:24:13Z",
+                                               "changelog":  "八页面桌面信息屏：时钟 / 温湿度 / 天气 / 额度 / 日历，接入真实接口数据",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22272,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "rlcd_frame_test.bin",
+                                                                 "size":  1682736,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "ssh-terminal",
+                          "name":  "SSH 终端",
+                          "tag":  "工具",
+                          "chip":  "esp32s3",
+                          "desc":  "全反射屏 SSH 客户端",
+                          "latest":  "1.0.0",
+                          "versions":  [
+                                           {
+                                               "version":  "1.0.0",
+                                               "url":  "firmware/ssh-terminal/ssh-terminal-v1.0.0.fwpack",
+                                               "size":  1300199,
+                                               "sha256":  "248324196d8a3233ff425369e4ba7ca975dec628ed8b709a59e821cc6ab48912",
+                                               "builtAt":  "2026-11-01T06:24:24Z",
+                                               "changelog":  "全反射屏 SSH 客户端，可在掌机形态下直接连接服务器操作终端",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22272,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x020000",
+                                                                 "path":  "ssh_terminal.bin",
+                                                                 "size":  2063088,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "desktop-info",
+                          "name":  "桌面信息屏（旧版）",
+                          "tag":  "归档",
+                          "chip":  "esp32s3",
+                          "desc":  "LVGL 版本 · 已移除内置凭据",
+                          "latest":  "1.1.0",
+                          "versions":  [
+                                           {
+                                               "version":  "1.1.0",
+                                               "url":  "firmware/desktop-info/desktop-info-v1.1.0.fwpack",
+                                               "size":  825659,
+                                               "sha256":  "382c9530de40aea7dc316b45fabb5e4cb0ba3b9a9d8bdaba6dca06cd24011792",
+                                               "builtAt":  "2026-11-10T06:51:35Z",
+                                               "changelog":  "安全重建：移除内置 WiFi / 和风 / 火山引擎凭据；首次启动进入配网门户 192.168.4.1 自行填写",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22272,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "desktop_info_screen.bin",
+                                                                 "size":  1339648,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "doom-rlcd",
+                          "name":  "DOOM 全反射屏掌机",
+                          "tag":  "游戏",
+                          "chip":  "esp32s3",
+                          "desc":  "经典 DOOM · 网页手柄操控 · 24fps",
+                          "latest":  "1.0.0",
+                          "versions":  [
+                                           {
+                                               "version":  "1.0.0",
+                                               "url":  "firmware/doom-rlcd/doom-rlcd-v1.0.0.fwpack",
+                                               "size":  2476060,
+                                               "sha256":  "b5f5238af6e2d37ade31293d63ead188b5681f3ced271734854f97a6751541f7",
+                                               "builtAt":  "2026-11-01T13:32:42Z",
+                                               "changelog":  "经典 DOOM 移植到全反射屏掌机，网页手柄操控、24fps 运行",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22272,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "doom_rlcd.bin",
+                                                                 "size":  1182848,
+                                                                 "role":  "app"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x410000",
+                                                                 "path":  "doom1.wad",
+                                                                 "size":  4196020,
+                                                                 "role":  "data"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "eink-42c",
+                          "name":  "4.2 寸三色墨水屏 · 面板自检",
+                          "tag":  "墨水屏",
+                          "chip":  "esp32s3",
+                          "desc":  "SSD1683 4.2 寸黑/白/红三色墨水屏自检固件：色块、棋盘格、边框角标与文字信息；串口 115200 输出芯片信息与全刷耗时",
+                          "latest":  "0.1.0",
+                          "versions":  [
+                                           {
+                                               "version":  "0.1.0",
+                                               "url":  "firmware/eink-42c/eink-42c-v0.1.0.fwpack",
+                                               "size":  215819,
+                                               "sha256":  "87b2a3dc38fd7efed1a949886f8f62b7e8464bac5facbe02749dbf2fd118dab2",
+                                               "builtAt":  "2026-11-10T16:31:20Z",
+                                               "changelog":  "新增 4.2 寸三色墨水屏（SSD1683 / GDEY042Z98）面板自检固件：黑/白/红色块、棋盘格、边框角标与文字信息，上电全刷后休眠；串口 115200 输出芯片信息与刷新耗时。修复原示例接线注释错误，补充 BUSY 异常提示与运行状态日志。",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "epd42c.ino.bootloader.bin",
+                                                                 "size":  19968,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "epd42c.ino.partitions.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "epd42c.ino.bin",
+                                                                 "size":  372256,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      }
+                  ]
 }
