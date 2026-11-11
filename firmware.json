@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-10T17:01:14Z",
+    "generatedAt":  "2026-11-11T01:14:03Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -283,9 +283,43 @@
                           "name":  "4.2 寸三色墨水屏 · 桌面信息屏",
                           "tag":  "墨水屏",
                           "chip":  "esp32s3",
-                          "desc":  "时间/天气/月历/用量/系统信息，400x300 三色墨水屏；网页后台可改配置、上传图片。首次上电开热点 EinkScreen 配网。",
-                          "latest":  "1.0.0",
+                          "desc":  "时间/天气/月历/用量/系统信息，网页上传图片；修复屏幕不刷新（SPI 传输层重写 + SSD1683 power-on + 标准刷新兜底）",
+                          "latest":  "1.0.1",
                           "versions":  [
+                                           {
+                                               "version":  "1.0.1",
+                                               "url":  "firmware/eink-info-screen/eink-info-screen-v1.0.1.fwpack",
+                                               "size":  755295,
+                                               "sha256":  "8cb5204ce6a6bb037571e3f6fdccdfc67628cd089c69f607c3c09e909cf2f0df",
+                                               "builtAt":  "2026-11-11T01:13:56Z",
+                                               "changelog":  "修复屏幕不刷新：SPI 传输层改为阻塞直发（原来 esp_lcd 异步分块会丢数据）、补上 SSD1683 的 power-on 序列、fast LUT 不生效时自动回退标准刷新（15.2s 实测正常）；真机 COM7 验证 BUSY=15.2s、/info busy_high=1。",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "eink_screen.bin",
+                                                                 "size":  1220816,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           },
                                            {
                                                "version":  "1.0.0",
                                                "url":  "firmware/eink-info-screen/eink-info-screen-v1.0.0.fwpack",
