@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-12T14:49:46Z",
+    "generatedAt":  "2026-11-12T15:03:48Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -229,6 +229,50 @@
                                                                  "offset":  "0x010000",
                                                                  "path":  "rlcd_frame_test.bin",
                                                                  "size":  1682736,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "eink-mingpan42",
+                          "name":  "4.2 寸三色墨水屏 · 命盘台历",
+                          "tag":  "墨水屏",
+                          "chip":  "esp32s3",
+                          "desc":  "四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页命理台历；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码",
+                          "latest":  "1.0.2",
+                          "versions":  [
+                                           {
+                                               "version":  "1.0.2",
+                                               "url":  "firmware/eink-mingpan42/eink-mingpan42-v1.0.2.fwpack",
+                                               "size":  1330071,
+                                               "sha256":  "8b3832947a584015ce9b4cbd510fa8e9ea7529072c1598906c411664d0ad97a1",
+                                               "builtAt":  "2026-11-12T15:03:31Z",
+                                               "changelog":  "新增：4.2 寸三色墨水屏命盘台历（四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码）",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "mingpan42.bin",
+                                                                 "size":  2240496,
                                                                  "role":  "app"
                                                              }
                                                          ]
