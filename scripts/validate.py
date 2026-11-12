@@ -15,7 +15,9 @@
   * 每个 .fwpack 能被解析：manifest format 以 fwpack/ 开头、files 非空、
     offset 合法且不重复、包内文件存在且 sha256 与 manifest 一致；
   * firmware/ 下没有索引未登记的孤儿包（警告）；
-  * 包内 manifest 的 id / version 与索引条目一致。
+  * 包内 manifest 的 id / version 与索引条目一致；
+  * 可选的 tool 块（刷机工具自身 OTA）：latest == 最新版本，url 指向的 exe
+    存在、size / sha256 与文件一致、文件是 Windows PE（MZ 头）。
 
 退出码：0 = 全部通过（可有警告），1 = 有错误。
 """
@@ -33,6 +35,7 @@ import zipfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX_PATH = os.path.join(ROOT, "firmware.json")
 FIRMWARE_DIR = os.path.join(ROOT, "firmware")
+TOOL_DIR = os.path.join(ROOT, "tool")
 
 VERSION_RE = re.compile(r"^\d+\.\d+\.\d+$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -307,6 +310,143 @@ def check_pack(pack_path: str, fw: dict, ver: dict) -> None:
 
 # ---------------------------------------------------------------- 主流程
 
+def check_tool(index: dict) -> None:
+    """校验可选的 tool 块（刷机工具自身 OTA 更新）。
+
+    缺失不算错误：v1.2.x 及更早的客户端不认识该块，索引也不会因此失效。
+    """
+    tool = index.get("tool")
+    if tool is None:
+        warn("索引没有 tool 块：刷机工具自身更新不可用（可选功能）")
+        return
+    if not isinstance(tool, dict):
+        bad("tool 不是对象")
+        return
+
+    versions = tool.get("versions")
+    if not isinstance(versions, list) or not versions:
+        bad("tool.versions 缺失或为空")
+        return
+    if not isinstance(versions[0], dict):
+        bad("tool.versions[0] 不是对象")
+        return
+
+    latest = str(tool.get("latest", ""))
+    if not VERSION_RE.match(latest):
+        bad(f"tool.latest={latest!r} 不是 x.y.z 形式")
+    if latest != str(versions[0].get("version", "")):
+        bad(f"tool.latest={latest!r} != tool.versions[0].version={versions[0].get('version')!r}")
+    else:
+        ok(f"tool.latest={latest} == tool.versions[0].version")
+
+    keep_max = 2
+    if len(versions) > keep_max:
+        warn(f"tool.versions 有 {len(versions)} 个版本（建议只保留最近 {keep_max} 个）")
+
+    seen_versions: set[str] = set()
+    seen_urls: set[str] = set()
+    prev_tuple = None
+    for i, ver in enumerate(versions):
+        if not isinstance(ver, dict):
+            bad(f"tool.versions[{i}] 不是对象")
+            continue
+        v = str(ver.get("version", ""))
+        tag = f"tool v{v or '?'}"
+        if not VERSION_RE.match(v):
+            bad(f"{tag}：版本号不是 x.y.z 形式")
+            continue
+        if v in seen_versions:
+            bad(f"{tag}：版本号重复")
+            continue
+        seen_versions.add(v)
+
+        vt = version_tuple(v)
+        if prev_tuple is not None and not (vt < prev_tuple):
+            bad(f"{tag}：tool.versions 未按版本从新到旧排列")
+        prev_tuple = vt
+
+        missing = [k for k in ("version", "url", "size", "sha256", "builtAt", "changelog") if k not in ver]
+        if missing:
+            bad(f"{tag}：缺少必填字段 {missing}")
+            continue
+
+        built_at = str(ver.get("builtAt", ""))
+        if not ISO_UTC_RE.match(built_at):
+            warn(f"{tag}：builtAt={built_at!r} 不是 ISO8601 UTC 格式")
+        if not str(ver.get("changelog", "")).strip():
+            bad(f"{tag}：changelog 为空")
+
+        url = str(ver.get("url", ""))
+        if not url:
+            bad(f"{tag}：url 为空")
+            continue
+        if "://" in url:
+            bad(f"{tag}：url={url!r} 应为相对路径（不是绝对 URL）")
+            continue
+        norm_url = url.replace("\\", "/")
+        if norm_url.startswith("/") or ".." in norm_url.split("/"):
+            bad(f"{tag}：url={url!r} 必须是仓库内相对路径")
+            continue
+        if norm_url in seen_urls:
+            bad(f"{tag}：url={url!r} 被多个版本引用")
+        seen_urls.add(norm_url)
+
+        if not norm_url.endswith(".exe"):
+            bad(f"{tag}：url={norm_url!r} 应以 .exe 结尾")
+        expected_url = f"tool/FirmwareFlasher-{v}.exe"
+        if norm_url != expected_url:
+            warn(f"{tag}：url={norm_url!r}，建议用规范路径 {expected_url!r}")
+
+        exe_path = os.path.join(ROOT, norm_url.replace("/", os.sep))
+        if not os.path.isfile(exe_path):
+            bad(f"{tag}：url 指向的文件不存在：{norm_url}")
+            continue
+
+        actual_size = os.path.getsize(exe_path)
+        try:
+            recorded_size = int(ver.get("size"))
+        except (TypeError, ValueError):
+            bad(f"{tag}：size={ver.get('size')!r} 不是整数")
+            recorded_size = None
+        if recorded_size is not None:
+            if recorded_size != actual_size:
+                bad(f"{tag}：size 不符（索引 {recorded_size}，实际 {actual_size}）")
+            else:
+                ok(f"{tag}：size={actual_size} 与实际一致")
+
+        recorded_sha = str(ver.get("sha256", "")).lower()
+        if not SHA256_RE.match(recorded_sha):
+            bad(f"{tag}：sha256 不是 64 位小写十六进制")
+        else:
+            actual_sha = sha256_file(exe_path)
+            if actual_sha != recorded_sha:
+                bad(f"{tag}：sha256 不符（索引 {recorded_sha[:12]}…，实际 {actual_sha[:12]}…）")
+            else:
+                ok(f"{tag}：sha256={actual_sha[:16]}… 与文件一致")
+
+        try:
+            with open(exe_path, "rb") as f:
+                magic = f.read(2)
+            if magic != b"MZ":
+                bad(f"{tag}：文件不是 Windows PE 可执行文件（缺少 MZ 头）")
+            else:
+                ok(f"{tag}：PE 头校验通过")
+        except OSError as e:
+            bad(f"{tag}：读取文件失败：{e}")
+
+    # tool/ 下的孤儿 exe
+    if os.path.isdir(TOOL_DIR):
+        orphans = [
+            name for name in os.listdir(TOOL_DIR)
+            if name.lower().endswith(".exe") and f"tool/{name}" not in seen_urls
+        ]
+        if orphans:
+            for name in sorted(orphans):
+                warn(f"tool/ 下存在索引未登记的 exe：{name}")
+        else:
+            ok("tool/ 下没有未登记的 .exe")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="校验 firmware.json 与 firmware/ 下固件包的一致性")
     parser.add_argument("--quiet", action="store_true", help="只打印错误/警告与汇总")
@@ -487,6 +627,10 @@ def main() -> int:
 
             # 包内部深度校验
             check_pack(pack_path, fw, ver)
+
+    # ---- 刷机工具自身更新（可选 tool 块）
+    section("刷机工具自身更新（tool）")
+    check_tool(index)
 
     # ---- 孤儿包
     section("孤儿包检查")
