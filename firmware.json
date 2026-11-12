@@ -1,6 +1,6 @@
 {
     "schema": "fwstore/1",
-    "generatedAt": "2026-11-12T14:05:49Z",
+    "generatedAt": "2026-11-12T14:20:11Z",
     "homepage": "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors": [
         "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -398,9 +398,9 @@
             {
                 "version": "1.3.0",
                 "url": "tool/FirmwareFlasher-1.3.0.exe",
-                "size": 21417292,
-                "sha256": "ca092285ae6f860f8a853327d006afd8ffb83da9ba82ba33fe57298d56bffaf5",
-                "builtAt": "2026-11-12T14:05:49Z",
+                "size": 21416931,
+                "sha256": "0901c2be0fbd6a03b0464ccf16ff233f1e20a2b92b16b4dbe4a7075fba5357ee",
+                "builtAt": "2026-11-12T14:20:11Z",
                 "changelog": "刷机工具自身支持在线更新：启动自动检查新版本，标题栏提示、一键下载校验后自动替换重启（保留旧版可回滚）。"
             }
         ]
