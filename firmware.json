@@ -1,11 +1,12 @@
 {
     "schema": "fwstore/1",
-    "generatedAt": "2026-11-12T13:40:00Z",
+    "generatedAt": "2026-11-12T13:46:05Z",
     "homepage": "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors": [
         "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
         "https://cdn.jsdelivr.net/gh/hemo528/ESP32Flasher-OTA@main/",
-        "https://ghproxy.net/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/"
+        "https://ghproxy.net/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
+        "https://gh-proxy.com/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/"
     ],
     "firmwares": [
         {
