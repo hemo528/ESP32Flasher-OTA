@@ -4,6 +4,8 @@
 
 刷机工具启动时拉取本仓库的 `firmware.json`，即可浏览 / 搜索固件 → 下载 → SHA-256 校验 → 入库存放；「刷写」页会对已安装固件打「可更新」标记。全程 HTTPS + SHA-256 校验，匿名可读，无需登录、无需 GitHub API。
 
+工具自身也支持在线更新：新版本 exe 发布到本仓库 	ool/ 目录，客户端启动时检查、一键下载校验并自动替换重启（保留 .exe.old 可回滚）。
+
 ---
 
 ## 索引地址
@@ -13,8 +15,11 @@
 | **主**（GitHub raw） | `https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/firmware.json` |
 | 备用（jsDelivr CDN，国内访问较快） | `https://cdn.jsdelivr.net/gh/hemo528/ESP32Flasher-OTA@main/firmware.json` |
 | 备用（ghproxy 加速） | `https://ghproxy.net/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/firmware.json` |
+| 备用（gh-proxy 加速） | `https://gh-proxy.com/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/firmware.json` |
 
-工具按「raw → jsDelivr → ghproxy」顺序探测；镜像前缀 + 索引内 `versions[].url` 拼成固件包的完整下载地址。raw CDN 缓存约 5 分钟，jsDelivr 首次访问可能需要预热。
+工具会并行探测以上镜像、先到先用；固件包下载走「上次成功的镜像优先 + 失败自动换下一个」，≥4 MB 的大文件（如工具 exe）优先走较快的代理镜像。镜像前缀 + 索引内 `versions[].url` 拼成完整下载地址。
+
+raw / jsDelivr 缓存约 5 分钟：刚发布新版本时，工具检查更新会带 `?t=<时间戳>` 绕开缓存，避免拿到旧索引。
 
 ---
 
@@ -36,6 +41,34 @@
 
 ---
 
+## 刷机工具自身更新（`tool` 块）
+
+索引顶层可选一个 `tool` 块，描述刷机工具 exe 的最新版本；旧版客户端会忽略它，不影响固件下载。
+
+```json
+"tool": {
+  "latest": "1.3.0",
+  "versions": [
+    {
+      "version": "1.3.0",
+      "url": "tool/FirmwareFlasher-1.3.0.exe",
+      "size": 21416931,
+      "sha256": "0901c2be0fbd6a03…（64 位小写十六进制）",
+      "builtAt": "2026-11-13T00:32:41Z",
+      "changelog": "刷机工具自身支持在线更新：启动检查、一键下载校验、自动替换重启"
+    }
+  ]
+}
+```
+
+- 只保留最近 **2 个版本**（`scripts/publish-tool.py -KeepVersions 2`），多余文件随发布删除
+- 工具端流程：启动检查（24 小时最多一次）→ 标题栏「⬆ 新版本」→ 弹窗 → 下载 → size + SHA-256 校验
+  → 退出并由 `%LOCALAPPDATA%\ESP32Flasher\store\update\update-<版本>.ps1` 替换 exe → 自动重启；
+  旧 exe 保留为 `FirmwareFlasher.exe.old`，回滚时手动改名回来即可
+- 校验项：文件存在、`size`、`sha256`、**PE 头 `MZ`**，以及 `tool/` 下无孤儿 exe
+
+---
+
 ## 目录结构
 
 ```
@@ -43,7 +76,10 @@ ESP32Flasher-OTA/
 ├── README.md                        # 本文件：商店说明、固件表、发布流程
 ├── firmware.json                    # ★ 索引：刷机工具读取的唯一入口
 ├── firmware/                        # 固件包（.fwpack，按 id 分目录）
-│   └── <id>/<id>-v<version>.fwpack
+│   ├── <id>/<id>-v<version>.fwpack
+│   └── …
+├── tool/                            # 刷机工具 exe（工具自身在线更新用）
+│   └── FirmwareFlasher-<version>.exe
 ├── scripts/
 │   ├── publish.ps1                  # 发布新固件：校验 → 拷贝 → 改索引 → push
 │   ├── validate.py                  # 索引 / 包一致性校验
@@ -141,6 +177,18 @@ ESP32Flasher-OTA/
 .\scripts\publish.ps1 -Pack 'C:\build\rlcd-screen-v1.3.0.fwpack' -Changelog "1. 新增大模型额度页"
 ```
 
+发布刷机工具新版本（先构建 exe，再推 tool 块）：
+
+```powershell
+# 预演
+python .\scripts\publish-tool.py -Exe C:\path\FirmwareFlasher.exe -Version 1.3.1 -Changelog "更新说明" -DryRun
+# 正式发布（校验 → 拷贝 → 改 tool 块 → 裁剪 → git commit & push）
+python .\scripts\publish-tool.py -Exe C:\path\FirmwareFlasher.exe -Version 1.3.1 -Changelog "更新说明"
+```
+
+`publish-tool.py` 参数：`-Exe` 必填、`-Version` 必填（必须大于当前 tool.latest）、`-Changelog`、
+`-KeepVersions` 默认 2、`-DryRun`、`-Force`（允许同版本覆盖）；同版本同 SHA-256 幂等跳过。
+
 参数：
 
 | 参数 | 默认 | 说明 |
@@ -172,7 +220,7 @@ ESP32Flasher-OTA/
 python scripts/validate.py
 ```
 
-校验内容：`schema` 前缀、`mirrors` 格式、固件必填字段、`latest == versions[0].version`、版本号格式与唯一性、`url` 相对路径与文件存在、`size`/`sha256` 与整包一致、包内 manifest 可解析（format / files / offset 合法且不重复 / 内部文件存在且 SHA-256 一致）、索引 `flash`/`files` 与包内 manifest 完全一致、`firmware/` 下无孤儿包。输出中文 ✓/✗ 列表，退出码 0 = 通过、1 = 失败。
+校验内容：`schema` 前缀、`mirrors` 格式、固件必填字段、`latest == versions[0].version`、版本号格式与唯一性、`url` 相对路径与文件存在、`size`/`sha256` 与整包一致、包内 manifest 可解析（format / files / offset 合法且不重复 / 内部文件存在且 SHA-256 一致）、索引 `flash`/`files` 与包内 manifest 完全一致、`firmware/` 下无孤儿包；以及 `tool` 块（`latest` 与排序、文件存在、size/sha256、PE 头 `MZ`、孤儿 exe）。输出中文 ✓/✗ 列表，退出码 0 = 通过、1 = 失败。
 
 **可选 CI**：`scripts/validate-workflow.yml` 是现成的 GitHub Actions 工作流模板。由于推送 workflow 文件需要 token 带 `workflow` 权限，本仓库默认不启用；需要时执行：
 
@@ -189,7 +237,7 @@ git add -A; git commit -m "ci: 启用 validate 工作流"; git push
 
 - 本仓库固件为**个人开发**，仅供**个人学习**与**自有设备刷写**使用；商用或二次分发请联系作者获得许可。
 - 刷机有风险：操作不当可能导致设备无法启动。请确认固件 `chip` 与目标设备一致（本仓库当前均为 `esp32s3`），并自行承担刷写风险；作者不承担设备损坏责任。
-- 固件包由本仓库索引与 SHA-256 保证完整性，请只从上方三个镜像地址下载。
+- 固件包由本仓库索引与 SHA-256 保证完整性，请只从上方几个镜像地址下载。
 
 ## License
 
