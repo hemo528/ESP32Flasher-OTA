@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-18T03:43:14Z",
+    "generatedAt":  "2026-11-19T16:03:54Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -273,6 +273,50 @@
                                                                  "offset":  "0x010000",
                                                                  "path":  "eink_screen.bin",
                                                                  "size":  1144144,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "ereader42",
+                          "name":  "4.2 寸黑白墨水屏 · 大脸猫的图书馆（电子书阅读器）",
+                          "tag":  "墨水屏",
+                          "chip":  "esp32s3",
+                          "desc":  "ESP32-S3 电子书阅读器：TXT/EPUB 书库、4 档字号、横竖屏两套 UI、网页传书与虚拟遥控、BLE 手柄翻页（Xbox/Stadia），OTP 波形快刷约 0.78s",
+                          "latest":  "0.5.8",
+                          "versions":  [
+                                           {
+                                               "version":  "0.5.8",
+                                               "url":  "firmware/ereader42/ereader42-v0.5.8.fwpack",
+                                               "size":  1919401,
+                                               "sha256":  "d4dbe668b558b06c4cc529ec64cf75cb34a3113fa1c9719c37e7b7d03a5fdf2c",
+                                               "builtAt":  "2026-11-19T16:00:14Z",
+                                               "changelog":  "首个版本：4.2 寸黑白墨水屏电子书阅读器「大脸猫的图书馆」。TXT/EPUB 书库（网页上传自动导入、EPUB 自动解包抽文与章节识别）；横屏/竖屏两套 UI、字号 4 档、行距 3 档、目录跳转；网页传书/书签/设置 + 虚拟遥控（方向键 + A/B）；BLE 手柄翻页（Xbox、Stadia 已验证）并支持休眠自动重连；OTP 波形快刷约 0.78 秒，停手 2 秒后自动补一次完整全刷护屏清残影；首次上电开热点 EReader42 配网。",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "ereader42.bin",
+                                                                 "size":  3220736,
                                                                  "role":  "app"
                                                              }
                                                          ]
