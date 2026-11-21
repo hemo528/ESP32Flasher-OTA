@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-21T15:42:43Z",
+    "generatedAt":  "2026-11-21T15:46:44Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -351,6 +351,50 @@
                                                                  "offset":  "0x010000",
                                                                  "path":  "ereader42.bin",
                                                                  "size":  3220736,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           }
+                                       ]
+                      },
+                      {
+                          "id":  "epd-probe42",
+                          "name":  "4.2 寸墨水屏 · 驱动芯片探测",
+                          "tag":  "墨水屏",
+                          "chip":  "esp32s3",
+                          "desc":  "4.2 寸墨水屏驱动芯片探测工具：一次跑完 SSD1683 / SSD1619A / UC8176(UC8276) / IL0398 四个候选（复位→初始化→写三色位图→触发刷新→测 BUSY 时序），每张测试页都印着自己的候选名，跑完停在结果页；画面是否正确是铁证、BUSY 时长是旁证，按 BOOT 重跑。引脚 SCK12/MOSI11/CS10/DC13/RST14/BUSY15，400×300 三色，BUSY 高=忙",
+                          "latest":  "1.0.0",
+                          "versions":  [
+                                           {
+                                               "version":  "1.0.0",
+                                               "url":  "firmware/epd-probe42/epd-probe42-v1.0.0.fwpack",
+                                               "size":  146799,
+                                               "sha256":  "74ce7a88214ad3a29c0678203a207356d2a68dc3c6cc5cbc7fbfd0e000262468",
+                                               "builtAt":  "2026-11-21T15:46:43Z",
+                                               "changelog":  "4.2 寸墨水屏驱动芯片探测工具：一次跑完 SSD1683 / SSD1619A / UC8176(UC8276) / IL0398 四个候选（复位→初始化→写三色位图→触发刷新→测 BUSY 时序），每张测试页都印着自己的候选名，跑完停在结果页；画面是否正确是铁证、BUSY 时长是旁证，按 BOOT 重跑。引脚 SCK12/MOSI11/CS10/DC13/RST14/BUSY15，400×300 三色，BUSY 高=忙",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  20832,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "epd_probe42.bin",
+                                                                 "size":  249760,
                                                                  "role":  "app"
                                                              }
                                                          ]
