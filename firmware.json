@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-21T15:46:44Z",
+    "generatedAt":  "2026-11-21T15:54:37Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -362,9 +362,43 @@
                           "name":  "4.2 寸墨水屏 · 驱动芯片探测",
                           "tag":  "墨水屏",
                           "chip":  "esp32s3",
-                          "desc":  "4.2 寸墨水屏驱动芯片探测工具：一次跑完 SSD1683 / SSD1619A / UC8176(UC8276) / IL0398 四个候选（复位→初始化→写三色位图→触发刷新→测 BUSY 时序），每张测试页都印着自己的候选名，跑完停在结果页；画面是否正确是铁证、BUSY 时长是旁证，按 BOOT 重跑。引脚 SCK12/MOSI11/CS10/DC13/RST14/BUSY15，400×300 三色，BUSY 高=忙",
-                          "latest":  "1.0.0",
+                          "desc":  "修正串口日志里 BUSY 空闲电平的提示文案：空闲时不再误报「面板未连接」；补上本机实测结果（这块 GDEY042Z98 用 SSD1683 与 SSD1619A 都能刷出，均 15191 ms；UC8176 只 4 ms 无响应；IL0398 初始化超时）",
+                          "latest":  "1.0.1",
                           "versions":  [
+                                           {
+                                               "version":  "1.0.1",
+                                               "url":  "firmware/epd-probe42/epd-probe42-v1.0.1.fwpack",
+                                               "size":  146792,
+                                               "sha256":  "a80e90d6ab5c32d4ea257eaf70c8bb94e212d0c1079f7ef2798ec405cd263636",
+                                               "builtAt":  "2026-11-21T15:54:36Z",
+                                               "changelog":  "修正串口日志里 BUSY 空闲电平的提示文案：空闲时不再误报「面板未连接」；补上本机实测结果（这块 GDEY042Z98 用 SSD1683 与 SSD1619A 都能刷出，均 15191 ms；UC8176 只 4 ms 无响应；IL0398 初始化超时）",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  20832,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "epd_probe42.bin",
+                                                                 "size":  249888,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           },
                                            {
                                                "version":  "1.0.0",
                                                "url":  "firmware/epd-probe42/epd-probe42-v1.0.0.fwpack",
