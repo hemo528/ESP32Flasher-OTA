@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-21T15:54:37Z",
+    "generatedAt":  "2026-11-23T05:54:54Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -65,8 +65,42 @@
                           "tag":  "墨水屏",
                           "chip":  "esp32s3",
                           "desc":  "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
-                          "latest":  "1.1.0",
+                          "latest":  "1.1.1",
                           "versions":  [
+                                           {
+                                               "version":  "1.1.1",
+                                               "url":  "firmware/eink-info-screen/eink-info-screen-v1.1.1.fwpack",
+                                               "size":  893036,
+                                               "sha256":  "3caa5095e128b083ceb06306deca7b3f8ea18aae9ed7d8024b85c2df8301d75c",
+                                               "builtAt":  "2026-11-23T05:54:24Z",
+                                               "changelog":  "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "eink_screen.bin",
+                                                                 "size":  1491968,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           },
                                            {
                                                "version":  "1.1.0",
                                                "url":  "firmware/eink-info-screen/eink-info-screen-v1.1.0.fwpack",
