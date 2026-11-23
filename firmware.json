@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-23T05:59:22Z",
+    "generatedAt":  "2026-11-23T05:59:48Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -421,8 +421,42 @@
                           "tag":  "墨水屏",
                           "chip":  "esp32s3",
                           "desc":  "ESP32-S3 电子书阅读器：TXT/EPUB 书库、4 档字号、横竖屏两套 UI、网页传书与虚拟遥控、BLE 手柄翻页（Xbox/Stadia），OTP 波形快刷约 0.78s",
-                          "latest":  "0.5.8",
+                          "latest":  "0.7.0",
                           "versions":  [
+                                           {
+                                               "version":  "0.7.0",
+                                               "url":  "firmware/ereader42/ereader42-v0.7.0.fwpack",
+                                               "size":  2020646,
+                                               "sha256":  "24eba7a74fe3540e3bbb5de655b175eeb16e236ed6f9b6a06e337f91114a0c3b",
+                                               "builtAt":  "2026-11-23T05:59:22Z",
+                                               "changelog":  "v0.7.0 更新：新增在线书库（OPDS）——网页「书库」页可配置 OPDS 目录（支持账号密码），直接搜索并下载 TXT/EPUB 自动导入书架；微信读书同步后可按书名自动补齐本地书库。新增微信读书集成：绑定官方 API Key 后同步书架与阅读进度，书架与本地书按书名自动匹配，可在设备上继续读。稳定性修复：导入改为常驻服务（大文件导入不再崩溃）、网页服务启动顺序与栈优化（上传/下载更稳）、存储仅首次开机允许自动格式化（防误删书库）。配网热点更名为 Epaper42-DLM（开放网络，无密码）。",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "ereader42.bin",
+                                                                 "size":  3382512,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           },
                                            {
                                                "version":  "0.5.8",
                                                "url":  "firmware/ereader42/ereader42-v0.5.8.fwpack",
