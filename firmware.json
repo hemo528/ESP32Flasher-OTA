@@ -1,596 +1,630 @@
 {
-    "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-23T05:59:48Z",
-    "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
-    "mirrors":  [
-                    "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
-                    "https://cdn.jsdelivr.net/gh/hemo528/ESP32Flasher-OTA@main/",
-                    "https://ghproxy.net/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
-                    "https://gh-proxy.com/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/"
-                ],
-    "firmwares":  [
-                      {
-                          "id":  "doom-rlcd",
-                          "name":  "DOOM 全反射屏掌机",
-                          "tag":  "游戏",
-                          "chip":  "esp32s3",
-                          "desc":  "经典 DOOM · 网页手柄操控 · 24fps",
-                          "latest":  "1.0.0",
-                          "versions":  [
-                                           {
-                                               "version":  "1.0.0",
-                                               "url":  "firmware/doom-rlcd/doom-rlcd-v1.0.0.fwpack",
-                                               "size":  2476060,
-                                               "sha256":  "b5f5238af6e2d37ade31293d63ead188b5681f3ced271734854f97a6751541f7",
-                                               "builtAt":  "2026-11-01T13:32:42Z",
-                                               "changelog":  "经典 DOOM 移植到全反射屏掌机，网页手柄操控、24fps 运行",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22272,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "doom_rlcd.bin",
-                                                                 "size":  1182848,
-                                                                 "role":  "app"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x410000",
-                                                                 "path":  "doom1.wad",
-                                                                 "size":  4196020,
-                                                                 "role":  "data"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      },
-                      {
-                          "id":  "eink-info-screen",
-                          "name":  "4.2 寸三色墨水屏 · 桌面信息屏",
-                          "tag":  "墨水屏",
-                          "chip":  "esp32s3",
-                          "desc":  "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
-                          "latest":  "1.1.1",
-                          "versions":  [
-                                           {
-                                               "version":  "1.1.1",
-                                               "url":  "firmware/eink-info-screen/eink-info-screen-v1.1.1.fwpack",
-                                               "size":  893036,
-                                               "sha256":  "3caa5095e128b083ceb06306deca7b3f8ea18aae9ed7d8024b85c2df8301d75c",
-                                               "builtAt":  "2026-11-23T05:54:24Z",
-                                               "changelog":  "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "eink_screen.bin",
-                                                                 "size":  1491968,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           },
-                                           {
-                                               "version":  "1.1.0",
-                                               "url":  "firmware/eink-info-screen/eink-info-screen-v1.1.0.fwpack",
-                                               "size":  893055,
-                                               "sha256":  "e936eb6e15f60b1edaca25a00d90c7ae9f055a4a83fdd2b2412d07f3f708f81f",
-                                               "builtAt":  "2026-11-21T15:42:42Z",
-                                               "changelog":  "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "eink_screen.bin",
-                                                                 "size":  1491968,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           },
-                                           {
-                                               "version":  "1.0.4",
-                                               "url":  "firmware/eink-info-screen/eink-info-screen-v1.0.4.fwpack",
-                                               "size":  755409,
-                                               "sha256":  "6bd812de1fe0a40d21d3b7af4c03a8470556b95acf496a68b2cdde1b6696719f",
-                                               "builtAt":  "2026-11-11T13:52:29Z",
-                                               "changelog":  "图片上传抖动算法升级：黑色与红色都参与三色矢量误差扩散（YCbCr 门控 FS），红渐变有网点、红黑过渡自然、肤色不泛红；新增红色灵敏度、红色抖动强度、对比度滑块与实时预览",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "eink_screen.bin",
-                                                                 "size":  1222128,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      },
-                      {
-                          "id":  "rlcd-screen",
-                          "name":  "RLCD 桌面信息屏",
-                          "tag":  "桌面屏",
-                          "chip":  "esp32s3",
-                          "desc":  "八页面 · 真实接口数据",
-                          "latest":  "1.2.0",
-                          "versions":  [
-                                           {
-                                               "version":  "1.2.0",
-                                               "url":  "firmware/rlcd-screen/rlcd-screen-v1.2.0.fwpack",
-                                               "size":  1002160,
-                                               "sha256":  "ef1cc0480ffe7d164762168cd839f8ef58f1624e558f7bbd6d10ffb99941b762",
-                                               "builtAt":  "2026-11-01T06:24:13Z",
-                                               "changelog":  "八页面桌面信息屏：时钟 / 温湿度 / 天气 / 额度 / 日历，接入真实接口数据",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22272,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "rlcd_frame_test.bin",
-                                                                 "size":  1682736,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      },
-                      {
-                          "id":  "eink-mingpan42",
-                          "name":  "4.2 寸三色墨水屏 · 命盘台历",
-                          "tag":  "墨水屏",
-                          "chip":  "esp32s3",
-                          "desc":  "四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页命理台历；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码",
-                          "latest":  "1.0.3",
-                          "versions":  [
-                                           {
-                                               "version":  "1.0.3",
-                                               "url":  "firmware/eink-mingpan42/eink-mingpan42-v1.0.3.fwpack",
-                                               "size":  1330217,
-                                               "sha256":  "206f37224ed385df704e4538f9f29ffff7ef88688bd3acf570aa37652a4f6023",
-                                               "builtAt":  "2026-11-23T05:55:46Z",
-                                               "changelog":  "新增：4.2 寸三色墨水屏命盘台历（四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码）",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "mingpan42.bin",
-                                                                 "size":  2240480,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           },
-                                           {
-                                               "version":  "1.0.2",
-                                               "url":  "firmware/eink-mingpan42/eink-mingpan42-v1.0.2.fwpack",
-                                               "size":  1330071,
-                                               "sha256":  "8b3832947a584015ce9b4cbd510fa8e9ea7529072c1598906c411664d0ad97a1",
-                                               "builtAt":  "2026-11-12T15:03:31Z",
-                                               "changelog":  "新增：4.2 寸三色墨水屏命盘台历（四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码）",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "mingpan42.bin",
-                                                                 "size":  2240496,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      },
-                      {
-                          "id":  "eink-screen42",
-                          "name":  "4.2 寸黑白墨水屏 · 桌面信息屏",
-                          "tag":  "墨水屏",
-                          "chip":  "esp32s3",
-                          "desc":  "时间 / 天气 / 月历 / 用量 / 系统 / 图片六页面，400×300 黑白墨水屏；网页后台改配置、上传自定义图片、夜间免打扰、BOOT 键翻页/长按全刷；配网热点无密码",
-                          "latest":  "1.2.2",
-                          "versions":  [
-                                           {
-                                               "version":  "1.2.2",
-                                               "url":  "firmware/eink-screen42/eink-screen42-v1.2.2.fwpack",
-                                               "size":  762804,
-                                               "sha256":  "b5967eebe3c75e8edf883dccd871e8b588940a4ab6d7e2c0df4146403c88e687",
-                                               "builtAt":  "2026-11-12T15:32:00Z",
-                                               "changelog":  "新增：4.2 寸黑白墨水屏（SSD1619A）桌面信息屏——时间/天气/月历/用量/系统/图片六页面，网页后台改配置与上传图片、夜间免打扰、BOOT 键翻页与长按全刷；配网热点无密码（开放）、出厂不带 WiFi 凭据",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "eink_screen.bin",
-                                                                 "size":  1235888,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      },
-                      {
-                          "id":  "eink-213-info",
-                          "name":  "2.13 寸三色墨水屏 · 桌面信息屏",
-                          "tag":  "墨水屏",
-                          "chip":  "esp32s3",
-                          "desc":  "时间 / 天气 / 月历 / 用量 / 系统 / 图片 六页面，212×104 三色；网页后台改配置、上传图片、按键翻页",
-                          "latest":  "1.0.1",
-                          "versions":  [
-                                           {
-                                               "version":  "1.0.1",
-                                               "url":  "firmware/eink-213-info/eink-213-info-v1.0.1.fwpack",
-                                               "size":  723262,
-                                               "sha256":  "86903652f4cf2b207bd85a76d7cb0f2df3456f0169da81b686b4e91fcd00e9ca",
-                                               "builtAt":  "2026-11-23T05:57:21Z",
-                                               "changelog":  "配网热点改为 Epaper42-DLM（开放热点，无密码），连上后访问 http://192.168.4.1/ 配置；其余功能与 v1.0.0 相同。",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "eink_screen.bin",
-                                                                 "size":  1144160,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           },
-                                           {
-                                               "version":  "1.0.0",
-                                               "url":  "firmware/eink-213-info/eink-213-info-v1.0.0.fwpack",
-                                               "size":  723189,
-                                               "sha256":  "bb31512c08f9501182f1d171fd9395202c7bacd8d6558af820bd86aa4f82a5f9",
-                                               "builtAt":  "2026-11-18T03:40:19Z",
-                                               "changelog":  "首版上架：2.13 寸三色墨水屏（SES2213JS0E1，212×104）桌面信息屏 v1.0.0；六页面（主页 / 天气 / 月历 / 用量 / 系统 / 图片），网页后台改 Wi-Fi 与配置、上传图片自动转三色，板载 BOOT 键翻页；全刷约 22 秒",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "eink_screen.bin",
-                                                                 "size":  1144144,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      },
-                      {
-                          "id":  "ereader42",
-                          "name":  "4.2 寸黑白墨水屏 · 大脸猫的图书馆（电子书阅读器）",
-                          "tag":  "墨水屏",
-                          "chip":  "esp32s3",
-                          "desc":  "ESP32-S3 电子书阅读器：TXT/EPUB 书库、4 档字号、横竖屏两套 UI、网页传书与虚拟遥控、BLE 手柄翻页（Xbox/Stadia），OTP 波形快刷约 0.78s",
-                          "latest":  "0.7.0",
-                          "versions":  [
-                                           {
-                                               "version":  "0.7.0",
-                                               "url":  "firmware/ereader42/ereader42-v0.7.0.fwpack",
-                                               "size":  2020646,
-                                               "sha256":  "24eba7a74fe3540e3bbb5de655b175eeb16e236ed6f9b6a06e337f91114a0c3b",
-                                               "builtAt":  "2026-11-23T05:59:22Z",
-                                               "changelog":  "v0.7.0 更新：新增在线书库（OPDS）——网页「书库」页可配置 OPDS 目录（支持账号密码），直接搜索并下载 TXT/EPUB 自动导入书架；微信读书同步后可按书名自动补齐本地书库。新增微信读书集成：绑定官方 API Key 后同步书架与阅读进度，书架与本地书按书名自动匹配，可在设备上继续读。稳定性修复：导入改为常驻服务（大文件导入不再崩溃）、网页服务启动顺序与栈优化（上传/下载更稳）、存储仅首次开机允许自动格式化（防误删书库）。配网热点更名为 Epaper42-DLM（开放网络，无密码）。",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "ereader42.bin",
-                                                                 "size":  3382512,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           },
-                                           {
-                                               "version":  "0.5.8",
-                                               "url":  "firmware/ereader42/ereader42-v0.5.8.fwpack",
-                                               "size":  1919401,
-                                               "sha256":  "d4dbe668b558b06c4cc529ec64cf75cb34a3113fa1c9719c37e7b7d03a5fdf2c",
-                                               "builtAt":  "2026-11-19T16:00:14Z",
-                                               "changelog":  "首个版本：4.2 寸黑白墨水屏电子书阅读器「大脸猫的图书馆」。TXT/EPUB 书库（网页上传自动导入、EPUB 自动解包抽文与章节识别）；横屏/竖屏两套 UI、字号 4 档、行距 3 档、目录跳转；网页传书/书签/设置 + 虚拟遥控（方向键 + A/B）；BLE 手柄翻页（Xbox、Stadia 已验证）并支持休眠自动重连；OTP 波形快刷约 0.78 秒，停手 2 秒后自动补一次完整全刷护屏清残影；首次上电开热点 EReader42 配网。",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  22288,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "ereader42.bin",
-                                                                 "size":  3220736,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      },
-                      {
-                          "id":  "epd-probe42",
-                          "name":  "4.2 寸墨水屏 · 驱动芯片探测",
-                          "tag":  "墨水屏",
-                          "chip":  "esp32s3",
-                          "desc":  "修正串口日志里 BUSY 空闲电平的提示文案：空闲时不再误报「面板未连接」；补上本机实测结果（这块 GDEY042Z98 用 SSD1683 与 SSD1619A 都能刷出，均 15191 ms；UC8176 只 4 ms 无响应；IL0398 初始化超时）",
-                          "latest":  "1.0.1",
-                          "versions":  [
-                                           {
-                                               "version":  "1.0.1",
-                                               "url":  "firmware/epd-probe42/epd-probe42-v1.0.1.fwpack",
-                                               "size":  146792,
-                                               "sha256":  "a80e90d6ab5c32d4ea257eaf70c8bb94e212d0c1079f7ef2798ec405cd263636",
-                                               "builtAt":  "2026-11-21T15:54:36Z",
-                                               "changelog":  "修正串口日志里 BUSY 空闲电平的提示文案：空闲时不再误报「面板未连接」；补上本机实测结果（这块 GDEY042Z98 用 SSD1683 与 SSD1619A 都能刷出，均 15191 ms；UC8176 只 4 ms 无响应；IL0398 初始化超时）",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  20832,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "epd_probe42.bin",
-                                                                 "size":  249888,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           },
-                                           {
-                                               "version":  "1.0.0",
-                                               "url":  "firmware/epd-probe42/epd-probe42-v1.0.0.fwpack",
-                                               "size":  146799,
-                                               "sha256":  "74ce7a88214ad3a29c0678203a207356d2a68dc3c6cc5cbc7fbfd0e000262468",
-                                               "builtAt":  "2026-11-21T15:46:43Z",
-                                               "changelog":  "4.2 寸墨水屏驱动芯片探测工具：一次跑完 SSD1683 / SSD1619A / UC8176(UC8276) / IL0398 四个候选（复位→初始化→写三色位图→触发刷新→测 BUSY 时序），每张测试页都印着自己的候选名，跑完停在结果页；画面是否正确是铁证、BUSY 时长是旁证，按 BOOT 重跑。引脚 SCK12/MOSI11/CS10/DC13/RST14/BUSY15，400×300 三色，BUSY 高=忙",
-                                               "minFlasher":  "1.2.0",
-                                               "flash":  {
-                                                             "mode":  "dio",
-                                                             "freq":  "80m",
-                                                             "size":  "16MB"
-                                                         },
-                                               "files":  [
-                                                             {
-                                                                 "offset":  "0x000000",
-                                                                 "path":  "bootloader.bin",
-                                                                 "size":  20832,
-                                                                 "role":  "bootloader"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x008000",
-                                                                 "path":  "partition-table.bin",
-                                                                 "size":  3072,
-                                                                 "role":  "partition"
-                                                             },
-                                                             {
-                                                                 "offset":  "0x010000",
-                                                                 "path":  "epd_probe42.bin",
-                                                                 "size":  249760,
-                                                                 "role":  "app"
-                                                             }
-                                                         ]
-                                           }
-                                       ]
-                      }
-                  ],
-    "tool":  {
-                 "latest":  "1.4.0",
-                 "versions":  [
-                                  {
-                                      "version":  "1.4.0",
-                                      "url":  "tool/FirmwareFlasher-1.4.0.exe",
-                                      "size":  21436831,
-                                      "sha256":  "8ac5e5e3a4f4fb3dca0bbb00e82790d3e520ce052213bdf9ccc7a454e2972e48",
-                                      "builtAt":  "2026-11-13T08:48:18Z",
-                                      "changelog":  "新增：固件备份/恢复（整片 Flash → .fwbackup 单文件，可原样写回，含分区表/NVS；恢复前校验芯片/容量/SHA-256；真机 16MB 备份→恢复→整片 SHA 比对一致）"
-                                  },
-                                  {
-                                      "version":  "1.3.0",
-                                      "url":  "tool/FirmwareFlasher-1.3.0.exe",
-                                      "size":  21416972,
-                                      "sha256":  "d8fc218a3a88b09bee78f75245927411ea79a12e03038d988a9d8f2d74f45c04",
-                                      "builtAt":  "2026-11-12T14:41:06Z",
-                                      "changelog":  "工具自更新：修复 20MB 下载偶发假死（镜像无数据 45 秒自动换源）、索引缓存绕过（?t=）、自替换后清理 PyInstaller 环境变量避免重启加载 DLL 失败"
-                                  }
-                              ]
-             }
+  "schema": "fwstore/1",
+  "generatedAt": "2026-11-23T06:02:14Z",
+  "homepage": "https://github.com/hemo528/ESP32Flasher-OTA",
+  "mirrors": [
+    "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
+    "https://cdn.jsdelivr.net/gh/hemo528/ESP32Flasher-OTA@main/",
+    "https://ghproxy.net/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
+    "https://gh-proxy.com/https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/"
+  ],
+  "firmwares": [
+    {
+      "id": "doom-rlcd",
+      "name": "DOOM 全反射屏掌机",
+      "tag": "游戏",
+      "chip": "esp32s3",
+      "desc": "经典 DOOM · 网页手柄操控 · 24fps",
+      "latest": "1.0.0",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "firmware/doom-rlcd/doom-rlcd-v1.0.0.fwpack",
+          "size": 2476060,
+          "sha256": "b5f5238af6e2d37ade31293d63ead188b5681f3ced271734854f97a6751541f7",
+          "builtAt": "2026-11-01T13:32:42Z",
+          "changelog": "经典 DOOM 移植到全反射屏掌机，网页手柄操控、24fps 运行",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22272,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "doom_rlcd.bin",
+              "size": 1182848,
+              "role": "app"
+            },
+            {
+              "offset": "0x410000",
+              "path": "doom1.wad",
+              "size": 4196020,
+              "role": "data"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eink-info-screen",
+      "name": "4.2 寸三色墨水屏 · 桌面信息屏",
+      "tag": "墨水屏",
+      "chip": "esp32s3",
+      "desc": "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
+      "latest": "1.1.1",
+      "versions": [
+        {
+          "version": "1.1.1",
+          "url": "firmware/eink-info-screen/eink-info-screen-v1.1.1.fwpack",
+          "size": 893036,
+          "sha256": "3caa5095e128b083ceb06306deca7b3f8ea18aae9ed7d8024b85c2df8301d75c",
+          "builtAt": "2026-11-23T05:54:24Z",
+          "changelog": "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "eink_screen.bin",
+              "size": 1491968,
+              "role": "app"
+            }
+          ]
+        },
+        {
+          "version": "1.1.0",
+          "url": "firmware/eink-info-screen/eink-info-screen-v1.1.0.fwpack",
+          "size": 893055,
+          "sha256": "e936eb6e15f60b1edaca25a00d90c7ae9f055a4a83fdd2b2412d07f3f708f81f",
+          "builtAt": "2026-11-21T15:42:42Z",
+          "changelog": "新增待办事项页：网页后台可添加、勾选、删除待办，屏幕上最多 10 条、每条 20 字，勾选后红底白勾并划删除线；主页与月历改用待办数据，去掉从来没有数据来源的空「日程」块；刷新策略改为按页按需——网页里的刷新间隔只作用于主页，待办随增删即时刷、月历跨天刷、天气与用量在数据真的变了才刷，不再每分钟整屏重刷；中文字体重建为 GB2312 全集，修复待办文本掉字",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "eink_screen.bin",
+              "size": 1491968,
+              "role": "app"
+            }
+          ]
+        },
+        {
+          "version": "1.0.4",
+          "url": "firmware/eink-info-screen/eink-info-screen-v1.0.4.fwpack",
+          "size": 755409,
+          "sha256": "6bd812de1fe0a40d21d3b7af4c03a8470556b95acf496a68b2cdde1b6696719f",
+          "builtAt": "2026-11-11T13:52:29Z",
+          "changelog": "图片上传抖动算法升级：黑色与红色都参与三色矢量误差扩散（YCbCr 门控 FS），红渐变有网点、红黑过渡自然、肤色不泛红；新增红色灵敏度、红色抖动强度、对比度滑块与实时预览",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "eink_screen.bin",
+              "size": 1222128,
+              "role": "app"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rlcd-screen",
+      "name": "RLCD 桌面信息屏",
+      "tag": "桌面屏",
+      "chip": "esp32s3",
+      "desc": "八页面 · 真实接口数据",
+      "latest": "1.2.0",
+      "versions": [
+        {
+          "version": "1.2.0",
+          "url": "firmware/rlcd-screen/rlcd-screen-v1.2.0.fwpack",
+          "size": 1002160,
+          "sha256": "ef1cc0480ffe7d164762168cd839f8ef58f1624e558f7bbd6d10ffb99941b762",
+          "builtAt": "2026-11-01T06:24:13Z",
+          "changelog": "八页面桌面信息屏：时钟 / 温湿度 / 天气 / 额度 / 日历，接入真实接口数据",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22272,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "rlcd_frame_test.bin",
+              "size": 1682736,
+              "role": "app"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eink-mingpan42",
+      "name": "4.2 寸三色墨水屏 · 命盘台历",
+      "tag": "墨水屏",
+      "chip": "esp32s3",
+      "desc": "四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页命理台历；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码",
+      "latest": "1.0.3",
+      "versions": [
+        {
+          "version": "1.0.3",
+          "url": "firmware/eink-mingpan42/eink-mingpan42-v1.0.3.fwpack",
+          "size": 1330217,
+          "sha256": "206f37224ed385df704e4538f9f29ffff7ef88688bd3acf570aa37652a4f6023",
+          "builtAt": "2026-11-23T05:55:46Z",
+          "changelog": "新增：4.2 寸三色墨水屏命盘台历（四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码）",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "mingpan42.bin",
+              "size": 2240480,
+              "role": "app"
+            }
+          ]
+        },
+        {
+          "version": "1.0.2",
+          "url": "firmware/eink-mingpan42/eink-mingpan42-v1.0.2.fwpack",
+          "size": 1330071,
+          "sha256": "8b3832947a584015ce9b4cbd510fa8e9ea7529072c1598906c411664d0ad97a1",
+          "builtAt": "2026-11-12T15:03:31Z",
+          "changelog": "新增：4.2 寸三色墨水屏命盘台历（四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码）",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "mingpan42.bin",
+              "size": 2240496,
+              "role": "app"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eink-screen42",
+      "name": "4.2 寸黑白墨水屏 · 桌面信息屏",
+      "tag": "墨水屏",
+      "chip": "esp32s3",
+      "desc": "时间 / 天气 / 月历 / 用量 / 系统 / 图片六页面，400×300 黑白墨水屏；网页后台改配置、上传自定义图片、夜间免打扰、BOOT 键翻页/长按全刷；配网热点无密码",
+      "latest": "1.2.3",
+      "versions": [
+        {
+          "version": "1.2.3",
+          "url": "firmware/eink-screen42/eink-screen42-v1.2.3.fwpack",
+          "size": 762783,
+          "sha256": "8758370722192cab32f4c7c90772977e4fe9822d6f35b042b59eb2dde20b8a06",
+          "builtAt": "2026-11-23T06:02:14Z",
+          "changelog": "配网热点名称改为 Epaper42-DLM（无密码、开放），网页提示与屏上未连接文案同步更新；其余功能与 1.2.2 完全一致",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "eink_screen.bin",
+              "size": 1235888,
+              "role": "app"
+            }
+          ]
+        },
+        {
+          "version": "1.2.2",
+          "url": "firmware/eink-screen42/eink-screen42-v1.2.2.fwpack",
+          "size": 762804,
+          "sha256": "b5967eebe3c75e8edf883dccd871e8b588940a4ab6d7e2c0df4146403c88e687",
+          "builtAt": "2026-11-12T15:32:00Z",
+          "changelog": "新增：4.2 寸黑白墨水屏（SSD1619A）桌面信息屏——时间/天气/月历/用量/系统/图片六页面，网页后台改配置与上传图片、夜间免打扰、BOOT 键翻页与长按全刷；配网热点无密码（开放）、出厂不带 WiFi 凭据",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "eink_screen.bin",
+              "size": 1235888,
+              "role": "app"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eink-213-info",
+      "name": "2.13 寸三色墨水屏 · 桌面信息屏",
+      "tag": "墨水屏",
+      "chip": "esp32s3",
+      "desc": "时间 / 天气 / 月历 / 用量 / 系统 / 图片 六页面，212×104 三色；网页后台改配置、上传图片、按键翻页",
+      "latest": "1.0.1",
+      "versions": [
+        {
+          "version": "1.0.1",
+          "url": "firmware/eink-213-info/eink-213-info-v1.0.1.fwpack",
+          "size": 723262,
+          "sha256": "86903652f4cf2b207bd85a76d7cb0f2df3456f0169da81b686b4e91fcd00e9ca",
+          "builtAt": "2026-11-23T05:57:21Z",
+          "changelog": "配网热点改为 Epaper42-DLM（开放热点，无密码），连上后访问 http://192.168.4.1/ 配置；其余功能与 v1.0.0 相同。",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "eink_screen.bin",
+              "size": 1144160,
+              "role": "app"
+            }
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "url": "firmware/eink-213-info/eink-213-info-v1.0.0.fwpack",
+          "size": 723189,
+          "sha256": "bb31512c08f9501182f1d171fd9395202c7bacd8d6558af820bd86aa4f82a5f9",
+          "builtAt": "2026-11-18T03:40:19Z",
+          "changelog": "首版上架：2.13 寸三色墨水屏（SES2213JS0E1，212×104）桌面信息屏 v1.0.0；六页面（主页 / 天气 / 月历 / 用量 / 系统 / 图片），网页后台改 Wi-Fi 与配置、上传图片自动转三色，板载 BOOT 键翻页；全刷约 22 秒",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "eink_screen.bin",
+              "size": 1144144,
+              "role": "app"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ereader42",
+      "name": "4.2 寸黑白墨水屏 · 大脸猫的图书馆（电子书阅读器）",
+      "tag": "墨水屏",
+      "chip": "esp32s3",
+      "desc": "ESP32-S3 电子书阅读器：TXT/EPUB 书库、4 档字号、横竖屏两套 UI、网页传书与虚拟遥控、BLE 手柄翻页（Xbox/Stadia），OTP 波形快刷约 0.78s",
+      "latest": "0.7.0",
+      "versions": [
+        {
+          "version": "0.7.0",
+          "url": "firmware/ereader42/ereader42-v0.7.0.fwpack",
+          "size": 2020646,
+          "sha256": "24eba7a74fe3540e3bbb5de655b175eeb16e236ed6f9b6a06e337f91114a0c3b",
+          "builtAt": "2026-11-23T05:59:22Z",
+          "changelog": "v0.7.0 更新：新增在线书库（OPDS）——网页「书库」页可配置 OPDS 目录（支持账号密码），直接搜索并下载 TXT/EPUB 自动导入书架；微信读书同步后可按书名自动补齐本地书库。新增微信读书集成：绑定官方 API Key 后同步书架与阅读进度，书架与本地书按书名自动匹配，可在设备上继续读。稳定性修复：导入改为常驻服务（大文件导入不再崩溃）、网页服务启动顺序与栈优化（上传/下载更稳）、存储仅首次开机允许自动格式化（防误删书库）。配网热点更名为 Epaper42-DLM（开放网络，无密码）。",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "ereader42.bin",
+              "size": 3382512,
+              "role": "app"
+            }
+          ]
+        },
+        {
+          "version": "0.5.8",
+          "url": "firmware/ereader42/ereader42-v0.5.8.fwpack",
+          "size": 1919401,
+          "sha256": "d4dbe668b558b06c4cc529ec64cf75cb34a3113fa1c9719c37e7b7d03a5fdf2c",
+          "builtAt": "2026-11-19T16:00:14Z",
+          "changelog": "首个版本：4.2 寸黑白墨水屏电子书阅读器「大脸猫的图书馆」。TXT/EPUB 书库（网页上传自动导入、EPUB 自动解包抽文与章节识别）；横屏/竖屏两套 UI、字号 4 档、行距 3 档、目录跳转；网页传书/书签/设置 + 虚拟遥控（方向键 + A/B）；BLE 手柄翻页（Xbox、Stadia 已验证）并支持休眠自动重连；OTP 波形快刷约 0.78 秒，停手 2 秒后自动补一次完整全刷护屏清残影；首次上电开热点 EReader42 配网。",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 22288,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "ereader42.bin",
+              "size": 3220736,
+              "role": "app"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "epd-probe42",
+      "name": "4.2 寸墨水屏 · 驱动芯片探测",
+      "tag": "墨水屏",
+      "chip": "esp32s3",
+      "desc": "修正串口日志里 BUSY 空闲电平的提示文案：空闲时不再误报「面板未连接」；补上本机实测结果（这块 GDEY042Z98 用 SSD1683 与 SSD1619A 都能刷出，均 15191 ms；UC8176 只 4 ms 无响应；IL0398 初始化超时）",
+      "latest": "1.0.1",
+      "versions": [
+        {
+          "version": "1.0.1",
+          "url": "firmware/epd-probe42/epd-probe42-v1.0.1.fwpack",
+          "size": 146792,
+          "sha256": "a80e90d6ab5c32d4ea257eaf70c8bb94e212d0c1079f7ef2798ec405cd263636",
+          "builtAt": "2026-11-21T15:54:36Z",
+          "changelog": "修正串口日志里 BUSY 空闲电平的提示文案：空闲时不再误报「面板未连接」；补上本机实测结果（这块 GDEY042Z98 用 SSD1683 与 SSD1619A 都能刷出，均 15191 ms；UC8176 只 4 ms 无响应；IL0398 初始化超时）",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 20832,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "epd_probe42.bin",
+              "size": 249888,
+              "role": "app"
+            }
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "url": "firmware/epd-probe42/epd-probe42-v1.0.0.fwpack",
+          "size": 146799,
+          "sha256": "74ce7a88214ad3a29c0678203a207356d2a68dc3c6cc5cbc7fbfd0e000262468",
+          "builtAt": "2026-11-21T15:46:43Z",
+          "changelog": "4.2 寸墨水屏驱动芯片探测工具：一次跑完 SSD1683 / SSD1619A / UC8176(UC8276) / IL0398 四个候选（复位→初始化→写三色位图→触发刷新→测 BUSY 时序），每张测试页都印着自己的候选名，跑完停在结果页；画面是否正确是铁证、BUSY 时长是旁证，按 BOOT 重跑。引脚 SCK12/MOSI11/CS10/DC13/RST14/BUSY15，400×300 三色，BUSY 高=忙",
+          "minFlasher": "1.2.0",
+          "flash": {
+            "mode": "dio",
+            "freq": "80m",
+            "size": "16MB"
+          },
+          "files": [
+            {
+              "offset": "0x000000",
+              "path": "bootloader.bin",
+              "size": 20832,
+              "role": "bootloader"
+            },
+            {
+              "offset": "0x008000",
+              "path": "partition-table.bin",
+              "size": 3072,
+              "role": "partition"
+            },
+            {
+              "offset": "0x010000",
+              "path": "epd_probe42.bin",
+              "size": 249760,
+              "role": "app"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tool": {
+    "latest": "1.4.0",
+    "versions": [
+      {
+        "version": "1.4.0",
+        "url": "tool/FirmwareFlasher-1.4.0.exe",
+        "size": 21436831,
+        "sha256": "8ac5e5e3a4f4fb3dca0bbb00e82790d3e520ce052213bdf9ccc7a454e2972e48",
+        "builtAt": "2026-11-13T08:48:18Z",
+        "changelog": "新增：固件备份/恢复（整片 Flash → .fwbackup 单文件，可原样写回，含分区表/NVS；恢复前校验芯片/容量/SHA-256；真机 16MB 备份→恢复→整片 SHA 比对一致）"
+      },
+      {
+        "version": "1.3.0",
+        "url": "tool/FirmwareFlasher-1.3.0.exe",
+        "size": 21416972,
+        "sha256": "d8fc218a3a88b09bee78f75245927411ea79a12e03038d988a9d8f2d74f45c04",
+        "builtAt": "2026-11-12T14:41:06Z",
+        "changelog": "工具自更新：修复 20MB 下载偶发假死（镜像无数据 45 秒自动换源）、索引缓存绕过（?t=）、自替换后清理 PyInstaller 环境变量避免重启加载 DLL 失败"
+      }
+    ]
+  }
 }
