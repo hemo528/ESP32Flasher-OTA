@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-23T05:58:21Z",
+    "generatedAt":  "2026-11-23T05:59:22Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -343,8 +343,42 @@
                           "tag":  "墨水屏",
                           "chip":  "esp32s3",
                           "desc":  "时间 / 天气 / 月历 / 用量 / 系统 / 图片 六页面，212×104 三色；网页后台改配置、上传图片、按键翻页",
-                          "latest":  "1.0.0",
+                          "latest":  "1.0.1",
                           "versions":  [
+                                           {
+                                               "version":  "1.0.1",
+                                               "url":  "firmware/eink-213-info/eink-213-info-v1.0.1.fwpack",
+                                               "size":  723262,
+                                               "sha256":  "86903652f4cf2b207bd85a76d7cb0f2df3456f0169da81b686b4e91fcd00e9ca",
+                                               "builtAt":  "2026-11-23T05:57:21Z",
+                                               "changelog":  "配网热点改为 Epaper42-DLM（开放热点，无密码），连上后访问 http://192.168.4.1/ 配置；其余功能与 v1.0.0 相同。",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "eink_screen.bin",
+                                                                 "size":  1144160,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           },
                                            {
                                                "version":  "1.0.0",
                                                "url":  "firmware/eink-213-info/eink-213-info-v1.0.0.fwpack",
