@@ -306,7 +306,7 @@
           "url": "firmware/eink-screen42/eink-screen42-v1.2.3.fwpack",
           "size": 762783,
           "sha256": "8758370722192cab32f4c7c90772977e4fe9822d6f35b042b59eb2dde20b8a06",
-          "builtAt": "2026-11-23T06:02:14Z",
+          "builtAt": "2026-11-23T05:59:24Z",
           "changelog": "配网热点名称改为 Epaper42-DLM（无密码、开放），网页提示与屏上未连接文案同步更新；其余功能与 1.2.2 完全一致",
           "minFlasher": "1.2.0",
           "flash": {
