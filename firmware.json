@@ -1,6 +1,6 @@
 {
     "schema":  "fwstore/1",
-    "generatedAt":  "2026-11-23T05:54:54Z",
+    "generatedAt":  "2026-11-23T05:58:21Z",
     "homepage":  "https://github.com/hemo528/ESP32Flasher-OTA",
     "mirrors":  [
                     "https://raw.githubusercontent.com/hemo528/ESP32Flasher-OTA/main/",
@@ -221,8 +221,42 @@
                           "tag":  "墨水屏",
                           "chip":  "esp32s3",
                           "desc":  "四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页命理台历；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码",
-                          "latest":  "1.0.2",
+                          "latest":  "1.0.3",
                           "versions":  [
+                                           {
+                                               "version":  "1.0.3",
+                                               "url":  "firmware/eink-mingpan42/eink-mingpan42-v1.0.3.fwpack",
+                                               "size":  1330217,
+                                               "sha256":  "206f37224ed385df704e4538f9f29ffff7ef88688bd3acf570aa37652a4f6023",
+                                               "builtAt":  "2026-11-23T05:55:46Z",
+                                               "changelog":  "新增：4.2 寸三色墨水屏命盘台历（四柱八字 / 阴盘奇门 / 六爻 / 紫微斗数 / 万年历奇门 五页；网页配置出生信息与翻页间隔；BOOT 键翻页；配网热点无密码）",
+                                               "minFlasher":  "1.2.0",
+                                               "flash":  {
+                                                             "mode":  "dio",
+                                                             "freq":  "80m",
+                                                             "size":  "16MB"
+                                                         },
+                                               "files":  [
+                                                             {
+                                                                 "offset":  "0x000000",
+                                                                 "path":  "bootloader.bin",
+                                                                 "size":  22288,
+                                                                 "role":  "bootloader"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x008000",
+                                                                 "path":  "partition-table.bin",
+                                                                 "size":  3072,
+                                                                 "role":  "partition"
+                                                             },
+                                                             {
+                                                                 "offset":  "0x010000",
+                                                                 "path":  "mingpan42.bin",
+                                                                 "size":  2240480,
+                                                                 "role":  "app"
+                                                             }
+                                                         ]
+                                           },
                                            {
                                                "version":  "1.0.2",
                                                "url":  "firmware/eink-mingpan42/eink-mingpan42-v1.0.2.fwpack",
